@@ -130,8 +130,9 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
     return threadPool;
   }
   
+  //EM 31/03/2016 : protected -> public
   @Override
-  protected List<AnalyzedSentence> analyzeSentences(List<String> sentences) throws IOException {
+  public List<AnalyzedSentence> analyzeSentences(List<String> sentences) throws IOException {
     if (sentences.size() < 2) {
       return super.analyzeSentences(sentences);
     }

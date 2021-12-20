@@ -1193,7 +1193,8 @@ public class JLanguageTool {
     return analyzeSentences(sentences);
   }
 
-  protected List<AnalyzedSentence> analyzeSentences(List<String> sentences) throws IOException {
+  //EM 31/03/2016 : protected -> public
+  public List<AnalyzedSentence> analyzeSentences(List<String> sentences) throws IOException {
     unknownWords = new HashSet<>();
     List<AnalyzedSentence> analyzedSentences = new ArrayList<>();
     int j = 0;
@@ -1448,6 +1449,11 @@ public class JLanguageTool {
 
   protected void rememberUnknownWords(AnalyzedSentence analyzedText) {
     if (listUnknownWords) {
+  	  //EM 12/04/2021 : init
+  	  if(unknownWords == null) {
+  		  unknownWords = new HashSet<>();
+  	  }
+
       AnalyzedTokenReadings[] atr = analyzedText.getTokensWithoutWhitespace();
       for (AnalyzedTokenReadings reading : atr) {
         if (!reading.isTagged()) {
